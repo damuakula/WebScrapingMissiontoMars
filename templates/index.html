@@ -51,48 +51,20 @@
             </div>
           {% endfor %}
             <div class="col-sm-6">
-                   <table>
-                      <h3>Mars Facts</h3>
-                      {% for key in tablelistings %}
-                        <tr>
-                            <td>Equatorial Diameter: </td>
-                            <td> {{ key['Equatorial Diameter:'] }} </td>
-                        </tr>
-                        <tr>
-                            <td>Polar Diameter: </td>
-                            <td> {{ key['Polar Diameter:'] }} </td>
-                        </tr>
-                        <tr>
-                             <td>Mass: </td>
-                            <td> {{ key['Mass:'] }} </td>
-                        </tr>
-                        <tr>
-                            <td>Moons: </td>
-                            <td> {{ key['Moons:'] }} </td>
-                        </tr>
-                        <tr>
-                            <td>Orbit Distance: </td>
-                            <td> {{ key['Orbit Distance:'] }} </td>
-                        </tr>
-                        <tr>
-                            <td>Orbit Period: </td>
-                            <td> {{ key['Orbit Period:'] }} </td>
-                        </tr>
-                        <tr>
-                             <td>Surface Temperature: </td>
-                            <td> {{ key['Surface Temperature:'] }} </td>
-                        </tr>
-                        <tr>
-                            <td>First Record: </td>
-                            <td> {{ key['First Record:'] }} </td>
-                        </tr>
-                        <tr>
-                            <td>Recorded By: </td>
-                            <td> {{ key['Recorded By:'] }} </td>
-                        </tr>
-                      {% endfor %}
-                  </table>
-                  <hr class="my-1">
+              <table>
+                <h3>Mars Facts</h3>
+                {% for listitem in tablelistings: %}
+                 {% for fact in listitem.items(): %}
+                    {% if fact[0] != "_id" %}
+                      <tr>
+                          <th> {{ fact[0] }} </th>
+                          <td> {{ fact[1] }} </td>
+                      </tr>
+                    {% endif %}
+                 {% endfor %}
+                {% endfor %}
+              </table>
+              <hr class="my-1">
              </div>
         </div>
          <div class="flex-column">
